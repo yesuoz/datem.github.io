@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -26,34 +28,67 @@
             color: #1E90FF; /* Açık mavi renk */
             text-align: center; /* Metni ortala */
         }
-        .kacan-buton, .evet {
-            width: 60%; /* Mobil cihazlarda buton genişliğini artır */
-            padding: 15px;
-            font-size: 5vw; /* Mobil cihazlarda yazı boyutunu artır */
-            margin: 10px auto; /* Butonları merkeze al */
-            position: fixed; /* Butonu sabitle */
-        }
         .kacan-buton {
+            width: 80%; /* Mobil cihazlarda buton genişliğini artır */
+            padding: 10px;
             background-color: transparent;
             color: white;
-            bottom: 20px; /* Alttan boşluk bırak */
-            right: 20px; /* Sağdan boşluk bırak */
+            text-align: center;
+            cursor: pointer;
             transition: transform 0.1s ease;
+            position: fixed; /* Butonu sabitle */
+            bottom: 30px; /* Alttan boşluk bırak */
+            right: 30px; /* Sağdan boşluk bırak */
         }
         .kacan-buton:hover {
             transform: translate(100px, -100px); /* Butona dokunulduğunda kaç */
         }
         .evet {
+            text-align: center;
+            position: fixed; /* Butonu sabitle */
             bottom: 80px; /* Alttan boşluk bırak */
             left: 20px; /* Soldan boşluk bırak */
+            width: 50%; /* Mobil cihazlarda EVET butonu genişliğini artır */
         }
         img {
             max-width: 100%; /* Resmi ekrana sığdır */
             height: auto; /* Resmin orantısını koru */
-            aspect-ratio: 16 / 7; /* Resmi 16:7 oranında kırp */
-            object-fit: cover; /* Resmi orantılı olarak doldur */
             display: block; /* Blok seviyesinde göster */
             margin: 0 auto; /* Merkeze al */
+        }
+        /* İkinci sayfa stilleri */
+        .container {
+            max-width: 100%; /* Konteyneri ekran genişliğine sığdır */
+            padding: 20px;
+            background: white;
+            text-align: center; /* İçeriği ortala */
+        }
+        .button {
+            display: block; /* Butonları blok seviyesinde göster */
+            width: 80%; /* Buton genişliğini ayarla */
+            margin: 10px auto; /* Butonları merkeze al */
+            padding: 15px;
+            font-size: 5vw; /* Yazı boyutunu ayarla */
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50; /* Yeşil renk */
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+        .button:hover {
+            background-color: #45a049; /* Butona dokunulduğunda rengi değiştir */
+        }
+        .button:active {
+            box-shadow: 0 5px #666;
+            transform: translateY(4px); /* Butona basıldığında efekt ver */
+        }
+        .welcome-text {
+            font-size: 5vw; /* Yazı boyutunu ayarla */
+            color: #333;
+            margin-bottom: 20px; /* Metin altında boşluk bırak */
         }
     </style>
 </head>
@@ -65,7 +100,7 @@
         <h3>Benimle Date'e Çıkar mısın?</h3>
     </div>
 
-    <!-- Resmi ekran genişliğine ve 16:7 oranına göre ayarla -->
+    <!-- Resmi ekran genişliğine göre ayarla -->
     <img src="simsek1.png" alt="Şimşek Resmi">
 
     <div class="kacan-buton" onmouseover="kac(this)">
