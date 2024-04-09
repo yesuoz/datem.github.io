@@ -54,42 +54,25 @@
             width: 6%;
             color: rgb(180, 20, 20);
         }
-        /* İkinci sayfa stilleri */
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .button {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 18px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50; /* Yeşil renk */
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-        }
-        .button:hover {background-color: #45a049}
-        .button:active {
-            background-color: #45a049;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-        .welcome-text {
-            background-color: #e8eaf6;
-            border-left: 5px solid #3f51b5;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 18px;
-            text-align: center;
+        /* Mobil uyumluluk için stil ayarları */
+        @media only screen and (max-width: 600px) {
+            h3 {
+                font-size: 5vw; /* Mobil cihazlarda yazı boyutunu artır */
+            }
+            .kacan-buton {
+                width: 20%; /* Mobil cihazlarda buton genişliğini artır */
+                top: auto;
+                left: auto;
+                bottom: 20px; /* Mobil cihazlarda butonu altta sabitle */
+                right: 20px; /* Mobil cihazlarda butonu sağda sabitle */
+            }
+            .evet {
+                width: 30%; /* Mobil cihazlarda EVET butonu genişliğini artır */
+                top: auto;
+                left: auto;
+                bottom: 80px; /* Mobil cihazlarda EVET butonunu yukarı taşı */
+                right: 20px; /* Mobil cihazlarda EVET butonunu sağda sabitle */
+            }
         }
     </style>
 </head>
@@ -119,10 +102,18 @@
 
     <script>
         function kac(element) {
-            var x = Math.random() * (window.innerWidth - element.clientWidth);
-            var y = Math.random() * (window.innerHeight - element.clientHeight);
-            element.style.top = y + 'px';
-            element.style.left = x + 'px';
+            // Mobil cihazlarda düzgün çalışması için ekran genişliğine göre koşullu pozisyonlandırma
+            if (window.innerWidth <= 600) {
+                var x = Math.random() * (window.innerWidth - element.clientWidth - 40); // Sağdan 20px boşluk bırak
+                var y = Math.random() * (window.innerHeight - element.clientHeight - 60); // Alttan 20px boşluk bırak
+                element.style.bottom = (window.innerHeight - y - element.clientHeight) + 'px';
+                element.style.right = (window.innerWidth - x - element.clientWidth) + 'px';
+            } else {
+                var x = Math.random() * (window.innerWidth - element.clientWidth);
+                var y = Math.random() * (window.innerHeight - element.clientHeight);
+                element.style.top = y + 'px';
+                element.style.left = x + 'px';
+            }
         }
 
         function openFormPage() {
@@ -144,4 +135,3 @@
     </script>
 </body>
 </html>
-
