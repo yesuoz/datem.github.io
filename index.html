@@ -12,67 +12,81 @@
             font-family: "Segoe UI";
             margin: 0;
             padding: 0;
+            overflow-x: hidden; /* Yatay kaydırmayı engelle */
         }
         .box {
-            min-height: 10vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #b0b0ef; /* Koyu mavi renk */
+            padding: 20px; /* İçerik etrafında boşluk bırak */
         }
         h3 {
-            font-size: 2vw;
-            font-weight: 500;
+            font-size: 6vw; /* Mobil cihazlarda yazı boyutunu artır */
             color: #1E90FF; /* Açık mavi renk */
             text-align: center; /* Metni ortala */
         }
         .kacan-buton {
-            width: 10%;
-            padding: 10px 20px;
+            width: 50%; /* Mobil cihazlarda buton genişliğini artır */
+            padding: 10px;
             background-color: transparent;
             color: white;
             text-align: center;
             cursor: pointer;
-            transition: top 0.1s ease, left 0.1s ease;
-            position: absolute;
-            top: 710px;
-            left: 60%;
-            margin-left: -80px;
-            display: flex;
-            height: 10%;
+            transition: transform 0.1s ease;
+            position: fixed; /* Butonu sabitle */
+            bottom: 20px; /* Alttan boşluk bırak */
+            right: 20px; /* Sağdan boşluk bırak */
         }
         .kacan-buton:hover {
-            top: calc(100% - 40px);
-            left: calc(100% - 80px);
+            transform: translate(100px, -100px); /* Butona dokunulduğunda kaç */
         }
         .evet {
             text-align: center;
-            position: absolute;
-            top: 720px;
-            left: 45%;
-            margin-left: -80px;
-            width: 6%;
-            color: rgb(180, 20, 20);
+            position: fixed; /* Butonu sabitle */
+            bottom: 80px; /* Alttan boşluk bırak */
+            left: 20px; /* Soldan boşluk bırak */
+            width: 50%; /* Mobil cihazlarda EVET butonu genişliğini artır */
         }
-        /* Mobil uyumluluk için stil ayarları */
-        @media only screen and (max-width: 600px) {
-            h3 {
-                font-size: 5vw; /* Mobil cihazlarda yazı boyutunu artır */
-            }
-            .kacan-buton {
-                width: 20%; /* Mobil cihazlarda buton genişliğini artır */
-                top: auto;
-                left: auto;
-                bottom: 20px; /* Mobil cihazlarda butonu altta sabitle */
-                right: 20px; /* Mobil cihazlarda butonu sağda sabitle */
-            }
-            .evet {
-                width: 30%; /* Mobil cihazlarda EVET butonu genişliğini artır */
-                top: auto;
-                left: auto;
-                bottom: 80px; /* Mobil cihazlarda EVET butonunu yukarı taşı */
-                right: 20px; /* Mobil cihazlarda EVET butonunu sağda sabitle */
-            }
+        img {
+            max-width: 100%; /* Resmi ekrana sığdır */
+            height: auto; /* Resmin orantısını koru */
+            display: block; /* Blok seviyesinde göster */
+            margin: 0 auto; /* Merkeze al */
+        }
+        /* İkinci sayfa stilleri */
+        .container {
+            max-width: 100%; /* Konteyneri ekran genişliğine sığdır */
+            padding: 20px;
+            background: white;
+            text-align: center; /* İçeriği ortala */
+        }
+        .button {
+            display: block; /* Butonları blok seviyesinde göster */
+            width: 80%; /* Buton genişliğini ayarla */
+            margin: 10px auto; /* Butonları merkeze al */
+            padding: 15px;
+            font-size: 5vw; /* Yazı boyutunu ayarla */
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50; /* Yeşil renk */
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+        .button:hover {
+            background-color: #45a049; /* Butona dokunulduğunda rengi değiştir */
+        }
+        .button:active {
+            box-shadow: 0 5px #666;
+            transform: translateY(4px); /* Butona basıldığında efekt ver */
+        }
+        .welcome-text {
+            font-size: 5vw; /* Yazı boyutunu ayarla */
+            color: #333;
+            margin-bottom: 20px; /* Metin altında boşluk bırak */
         }
     </style>
 </head>
@@ -84,36 +98,23 @@
         <h3>Benimle Date'e Çıkar mısın?</h3>
     </div>
 
-    <center><img src="simsek1.png" height="550px" width="850px"></center>
+    <!-- Resmi ekran genişliğine göre ayarla -->
+    <img src="simsek1.png" alt="Şimşek Resmi">
 
-    <br><br><br>
-   
     <div class="kacan-buton" onmouseover="kac(this)">
-        <button type="button" class="btn btn-danger"><h2>HAYIR</h2></button>
+        <button type="button" class="btn btn-danger">HAYIR</button>
     </div>
 
-    <center>
-        <div class="evet">
-            <a href="javascript:void(0);" onclick="openFormPage()">
-                <button type="button" class="btn btn-light" style="color: rgb(180, 20, 20); height: 8%;"><h2>EVET</h2></button>
-            </a>
-        </div>
-    </center>
+    <div class="evet">
+        <button type="button" class="btn btn-light" onclick="openFormPage()">EVET</button>
+    </div>
 
     <script>
         function kac(element) {
-            // Mobil cihazlarda düzgün çalışması için ekran genişliğine göre koşullu pozisyonlandırma
-            if (window.innerWidth <= 600) {
-                var x = Math.random() * (window.innerWidth - element.clientWidth - 40); // Sağdan 20px boşluk bırak
-                var y = Math.random() * (window.innerHeight - element.clientHeight - 60); // Alttan 20px boşluk bırak
-                element.style.bottom = (window.innerHeight - y - element.clientHeight) + 'px';
-                element.style.right = (window.innerWidth - x - element.clientWidth) + 'px';
-            } else {
-                var x = Math.random() * (window.innerWidth - element.clientWidth);
-                var y = Math.random() * (window.innerHeight - element.clientHeight);
-                element.style.top = y + 'px';
-                element.style.left = x + 'px';
-            }
+            // Butonun kaçma hareketini rastgele yap
+            var x = Math.random() * (window.innerWidth - element.clientWidth - 40); // Sağdan 20px boşluk bırak
+            var y = Math.random() * (window.innerHeight - element.clientHeight - 60); // Alttan 20px boşluk bırak
+            element.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
         }
 
         function openFormPage() {
@@ -135,3 +136,4 @@
     </script>
 </body>
 </html>
+
