@@ -13,8 +13,8 @@
             overflow: hidden; /* Ekran dışına çıkan içerikleri gizle */
         }
         img {
-            width: 250px; /* Boyutu 2.5 katına çıkar */
-            height: 250px; /* Boyutu 2.5 katına çıkar */
+            width: 100px;
+            height: 100px;
             object-fit: cover;
         }
         .button {
@@ -75,11 +75,10 @@
         }
 
         function rejectDate() {
-            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titreştir
+            // Hayır butonuna tıklandığında patlama efekti oluştur
             var explosion = document.querySelector('.explosion');
             explosion.style.opacity = '1';
-            explosion.style.transform = 'translate(-50%, -50%) scale(5)';
-            navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
+            explosion.style.transform = 'translate(-50%, -50%) scale(3)';
             setTimeout(function() {
                 document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>';
             }, 700); // Patlama efekti sonrasında mesajı göster
@@ -87,4 +86,3 @@
     </script>
 </body>
 </html>
-
