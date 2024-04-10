@@ -1,139 +1,92 @@
-
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Date</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
+    <title>Date'e Çıkalım mı?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background: #000000; /* Arka planı siyah yap */
-            font-family: "Segoe UI";
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Yatay kaydırmayı engelle */
-        }
-        .box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #b0b0ef; /* Koyu mavi renk */
-            padding: 20px; /* İçerik etrafında boşluk bırak */
-        }
-        h3 {
-            font-size: 6vw; /* Mobil cihazlarda yazı boyutunu artır */
-            color: #1E90FF; /* Açık mavi renk */
-            text-align: center; /* Metni ortala */
-        }
-        .kacan-buton {
-            width: 50%; /* Mobil cihazlarda buton genişliğini artır */
-            padding: 10px;
-            background-color: transparent;
-            color: white;
+            background-color: #f4f4f4;
             text-align: center;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-            position: fixed; /* Butonu sabitle */
-            bottom: 20px; /* Alttan boşluk bırak */
-            right: 20px; /* Sağdan boşluk bırak */
-        }
-        .kacan-buton:hover {
-            transform: translate(100px, -100px); /* Butona dokunulduğunda kaç */
-        }
-        .evet {
-            text-align: center;
-            position: fixed; /* Butonu sabitle */
-            bottom: 80px; /* Alttan boşluk bırak */
-            left: 20px; /* Soldan boşluk bırak */
-            width: 50%; /* Mobil cihazlarda EVET butonu genişliğini artır */
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Ekran dışına çıkan içerikleri gizle */
         }
         img {
-            max-width: 100%; /* Resmi ekrana sığdır */
-            height: auto; /* Resmin orantısını koru */
-            display: block; /* Blok seviyesinde göster */
-            margin: 0 auto; /* Merkeze al */
-        }
-        /* İkinci sayfa stilleri */
-        .container {
-            max-width: 100%; /* Konteyneri ekran genişliğine sığdır */
-            padding: 20px;
-            background: white;
-            text-align: center; /* İçeriği ortala */
+            width: 250px; /* Boyutu 2.5 katına çıkar */
+            height: 250px; /* Boyutu 2.5 katına çıkar */
+            object-fit: cover;
         }
         .button {
-            display: block; /* Butonları blok seviyesinde göster */
-            width: 80%; /* Buton genişliğini ayarla */
-            margin: 10px auto; /* Butonları merkeze al */
-            padding: 15px;
-            font-size: 5vw; /* Yazı boyutunu ayarla */
+            display: inline-block;
+            margin: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
             cursor: pointer;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50; /* Yeşil renk */
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Renk değişim animasyonu ekle */
         }
         .button:hover {
-            background-color: #45a049; /* Butona dokunulduğunda rengi değiştir */
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* Fare üzerine gelindiğinde gölge efekti */
         }
-        .button:active {
-            box-shadow: 0 5px #666;
-            transform: translateY(4px); /* Butona basıldığında efekt ver */
+        .yes {
+            background-color: #4CAF50;
+            color: white;
         }
-        .welcome-text {
-            font-size: 5vw; /* Yazı boyutunu ayarla */
-            color: #333;
-            margin-bottom: 20px; /* Metin altında boşluk bırak */
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+        /* Patlama efekti için stil */
+        .explosion {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,255,0,0) 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
         }
     </style>
 </head>
 <body>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <div class="box">
-        <h3>Benimle Date'e Çıkar mısın?</h3>
+    <h2>Benimle Date'e Çıkar Mısın?</h2>
+    <img src="kare-fotograf.jpg" alt="Kare Fotoğraf">
+    <div>
+        <button class="button yes" onclick="openSecondPage()">Evet</button>
+        <button class="button no" onclick="rejectDate()">Hayır</button>
     </div>
-
-    <!-- Resmi ekran genişliğine göre ayarla -->
-    <img src="simsek1.png" alt="Şimşek Resmi">
-
-    <div class="kacan-buton" onmouseover="kac(this)">
-        <button type="button" class="btn btn-danger">HAYIR</button>
-    </div>
-
-    <div class="evet">
-        <button type="button" class="btn btn-light" onclick="openFormPage()">EVET</button>
-    </div>
-
+    <div class="explosion"></div> <!-- Patlama efekti için konteyner -->
     <script>
-        function kac(element) {
-            // Butonun kaçma hareketini rastgele yap
-            var x = Math.random() * (window.innerWidth - element.clientWidth - 40); // Sağdan 20px boşluk bırak
-            var y = Math.random() * (window.innerHeight - element.clientHeight - 60); // Alttan 20px boşluk bırak
-            element.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-        }
-
-        function openFormPage() {
-            document.body.style.background = "#FFFFFF"; // Arka planı beyaz yap
+        function openSecondPage() {
+            // İkinci sayfayı aç
             document.body.innerHTML = `
-                <div class="container" style="background: #FFFFFF;"> <!-- Arka planı beyaz yap -->
-                    <div class="welcome-text">
-                        <p>Nasılsın? Umarım iyisindir. Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum.</p>
-                    </div>
-                    <a href="https://forms.gle/Ty8WNVMHkReSDZfr8" target="_blank" class="button">
+                <!-- İkinci sayfa içeriği -->
+                <div style="padding: 20px; background: white; color: #333;">
+                    <p>Nasılsın? Umarım iyisindir. Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum.</p>
+                    <a href="https://forms.gle/Ty8WNVMHkReSDZfr8" target="_blank" class="button yes">
                         Date Tarihi Ayarla
                     </a>
-                    <a href="https://www.youtube.com/watch?v=naUqWQ-of6o" target="_blank" class="button">
+                    <a href="https://www.youtube.com/watch?v=naUqWQ-of6o" target="_blank" class="button yes">
                         Bu da benden sana bir şarkı
                     </a>
                 </div>
             `;
+        }
+
+        function rejectDate() {
+            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titreştir
+            var explosion = document.querySelector('.explosion');
+            explosion.style.opacity = '1';
+            explosion.style.transform = 'translate(-50%, -50%) scale(5)';
+            navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
+            setTimeout(function() {
+                document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>';
+            }, 700); // Patlama efekti sonrasında mesajı göster
         }
     </script>
 </body>
