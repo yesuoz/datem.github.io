@@ -46,6 +46,17 @@
     transform: translate(-50%, -50%);
     font-size: 50px;
     color: red;
+    animation: explode 1s ease-out forwards;
+  }
+  @keyframes explode {
+    from {
+      opacity: 1;
+      transform: scale(0.1) translate(-50%, -50%);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1) translate(-50%, -50%);
+    }
   }
   @media only screen and (max-width: 600px) {
     .button, .button-red {
@@ -73,56 +84,7 @@ function accept() {
 <meta charset="UTF-8">
 <title>Form Sayfası</title>
 <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .button {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 20px;
-    font-size: 48px; /* 3 kat büyük yazı boyutu */
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #e598d0;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #ed87e6;
-  }
-  .button:hover {background-color: #3e8e41}
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  .welcome-text {
-    background-color: #e8eaf6;
-    border-left: 5px solid #3f51b5;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 18px;
-  }
-  @media only screen and (max-width: 600px) {
-    .button {
-      font-size: 36px; /* Mobil cihazlarda daha küçük yazı boyutu */
-      padding: 15px;
-    }
-  }
+  /* Stiller burada yer alacak */
 </style>
 </head>
 <body>
@@ -151,16 +113,15 @@ function accept() {
 </body>
 </html>
 `;
-  // Yukarıda verdiğiniz form sayfasının içeriğini buraya ekleyin
 }
 
 function decline() {
   var explosion = document.getElementById('explosion');
   explosion.style.display = 'block';
+  // Animasyon sonunda patlama efektini gizle
   setTimeout(function() {
     explosion.style.display = 'none';
-    alert('Pekii, iyi günler.');
-  }, 500);
+  }, 1000);
 }
 </script>
 
