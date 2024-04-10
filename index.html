@@ -4,27 +4,21 @@
 <meta charset="UTF-8">
 <title>Karşılama Sayfası</title>
 <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+  body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
   }
+
   .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 100%;
   }
+
   .button, .button-red {
     display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 20px;
-    font-size: 48px; /* 3 kat büyük yazı boyutu */
+    width: auto;
+    padding: 1.5% 3%;
+    font-size: 2vw;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -34,20 +28,24 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 5px #666;
+    margin: 0 auto;
   }
+
   .button-red {
     background-color: #f44336;
   }
+
   .explosion {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 1750px; /* Original size was 50px, 35 times larger */
     color: red;
     animation: explode 1s ease-out forwards;
   }
+
   @keyframes explode {
     from {
       opacity: 1;
@@ -58,9 +56,10 @@
       transform: scale(1) translate(-50%, -50%);
     }
   }
+
   @media only screen and (max-width: 600px) {
     .button, .button-red {
-      font-size: 36px; /* Mobil cihazlarda daha küçük yazı boyutu */
+      font-size: 36px; /* Smaller font size for mobile devices */
       padding: 15px;
     }
   }
