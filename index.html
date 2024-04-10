@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Date'e Çıkalım mı?</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 50px;
-            font-family: Arial, sans-serif;
-        }
-        img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-        }
-        .button {
-            display: inline-block;
-            margin: 15px;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        .yes {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .no {
-            background-color: #f44336;
-            color: white;
-        }
-        .explosion {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,255,0,0) 70%);
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.5s, transform 0.5s;
-            visibility: hidden;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Karşılama Sayfası</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  .button-red {
+    background-color: #f44336;
+  }
+  .explosion {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: red;
+  }
+  /* Diğer stil ayarları */
+</style>
 </head>
 <body>
-    <h2>Benimle Date'e Çıkar Mısın?</h2>
-    <img src="kare-fotograf.jpg" alt="Kare Fotoğraf">
-    <div>
-        <button class="button yes" onclick="openSecondPage()">Evet</button>
-        <button class="button no" onclick="rejectDate()">Hayır</button>
-    </div>
-    <div class="explosion"></div>
-    <script>
-        function openSecondPage() {
-            window.location.href = 'secondPage.html'; // İkinci sayfaya yönlendir
-        }
 
-        function rejectDate() {
-            var explosion = document.querySelector('.explosion');
-            var buttons = document.querySelectorAll('.button');
-            explosion.style.opacity = '1';
-            explosion.style.visibility = 'visible';
-            explosion.style.transform = 'translate(-50%, -50%) scale(5)';
-            navigator.vibrate(500);
-            setTimeout(function() {
-                explosion.style.opacity = '0';
-                explosion.style.visibility = 'hidden';
-                buttons.forEach(button => button.style.display = 'none');
-                document.body.innerHTML += '<h2>Pekii, iyi günler!</h2>';
-            }, 700);
-        }
-    </script>
+<div class="container">
+  <p>"Gayem zat-ı alinizi taciz etmek değil, efkari umumide muhabbet kurmaktır. Cevabı müspetniz kalb-i hazı halimi tamir ve temin edeceğinden dest-i muhabbetinize talibim"</p>
+  <button class="button" onclick="accept()">Evet</button>
+  <button class="button button-red" onclick="decline()">Hayır</button>
+  <div id="explosion" class="explosion">💥</div>
+</div>
+
+<script>
+function accept() {
+  // Kullanıcıyı ikinci sayfaya yönlendirme
+  document.body.innerHTML = `<!-- İkinci sayfanın HTML içeriği buraya eklenecek -->`;
+  // Yukarıda verdiğiniz form sayfasının içeriğini buraya ekleyin
+}
+
+function decline() {
+  var explosion = document.getElementById('explosion');
+  explosion.style.display = 'block';
+  setTimeout(function() {
+    explosion.style.display = 'none';
+    alert('Pekii, iyi günler.');
+  }, 500);
+}
+</script>
+
 </body>
 </html>
