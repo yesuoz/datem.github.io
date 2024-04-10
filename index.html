@@ -5,16 +5,17 @@
     <title>Date'e Çıkalım mı?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Stiller buraya eklenecek */
         body {
             background-color: #f4f4f4;
             text-align: center;
             padding-top: 50px;
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Ekran dışına çıkan içerikleri gizle */
+            overflow: hidden;
         }
         img {
-            width: 250px; /* Boyutu 2.5 katına çıkar */
-            height: 250px; /* Boyutu 2.5 katına çıkar */
+            width: 100px;
+            height: 100px;
             object-fit: cover;
         }
         .button {
@@ -25,8 +26,6 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            position: relative; /* Butonların tıklanabilirliğini sağla */
-            z-index: 2; /* Butonları patlama efektinin önüne al */
         }
         .yes {
             background-color: #4CAF50;
@@ -36,7 +35,6 @@
             background-color: #f44336;
             color: white;
         }
-        /* Patlama efekti için stil */
         .explosion {
             position: absolute;
             top: 50%;
@@ -48,7 +46,6 @@
             border-radius: 50%;
             opacity: 0;
             transition: opacity 0.5s, transform 0.5s;
-            z-index: 1; /* Patlama efektini butonların arkasına al */
         }
     </style>
 </head>
@@ -56,35 +53,33 @@
     <h2>Benimle Date'e Çıkar Mısın?</h2>
     <img src="kare-fotograf.jpg" alt="Kare Fotoğraf">
     <div>
-        <button class="button yes" onclick="openSecondPage()">Evet</button>
-        <button class="button no" onclick="rejectDate()">Hayır</button>
+        <button class="button yes" id="yesButton">Evet</button>
+        <button class="button no" id="noButton">Hayır</button>
     </div>
-    <div class="explosion"></div> <!-- Patlama efekti için konteyner -->
+    <div class="explosion"></div>
     <script>
+        // Evet butonu için olay tanımlayıcı
+        document.getElementById('yesButton').addEventListener('click', openSecondPage);
+
+        // Hayır butonu için olay tanımlayıcı
+        document.getElementById('noButton').addEventListener('click', rejectDate);
+
         function openSecondPage() {
             // İkinci sayfayı aç
-            document.body.innerHTML = `
-                <!-- İkinci sayfa içeriği -->
-                <div style="padding: 20px; background: white; color: #333;">
-                    <p>Nasılsın? Umarım iyisindir. Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum.</p>
-                    <a href="https://forms.gle/Ty8WNVMHkReSDZfr8" target="_blank" class="button yes">
-                        Date Tarihi Ayarla
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=naUqWQ-of6o" target="_blank" class="button yes">
-                        Bu da benden sana bir şarkı
-                    </a>
-                </div>
-            `;
+            window.location.href = 'secondPage.html'; // İkinci sayfa URL'si
         }
 
         function rejectDate() {
-            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titreştir
+            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titret
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
             var explosion = document.querySelector('.explosion');
             explosion.style.opacity = '1';
-            explosion.style.transform = 'translate(-50%, -50%) scale(5)';
-            navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
+            explosion.style.transform = 'translate(-50%, -50%) scale(3)';
             setTimeout(function() {
-                // Patlama efekti sonrasında 'Pekii, iyi günler!' sayfasına geç
+                explosion.style.opacity = '0';
+                explosion.style.transform = 'translate(-50%, -50%) scale(1)';
                 document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>';
             }, 700); // Patlama efekti sonrasında mesajı göster
         }
