@@ -11,26 +11,29 @@
     padding: 20px;
   }
   .container {
-    max-width: 600px;
+    max-width: 100%;
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+  .button, .button-red {
+    display: block; /* Butonları blok element yap */
+    width: 100%; /* Tam genişlik */
+    padding: 15px; /* Daha büyük padding */
+    font-size: 18px; /* Daha büyük font boyutu */
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
     border: none;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px 0; /* Daha fazla marj */
+  }
+  .button {
+    background-color: #4CAF50;
   }
   .button-red {
     background-color: #f44336;
@@ -44,7 +47,15 @@
     font-size: 50px;
     color: red;
   }
-  /* Diğer stil ayarları */
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 0;
+    }
+    .button, .button-red {
+      padding: 12px; /* Mobil için daha küçük padding */
+      font-size: 16px; /* Mobil için daha küçük font boyutu */
+    }
+  }
 </style>
 </head>
 <body>
@@ -59,7 +70,7 @@
 <script>
 function accept() {
   // Kullanıcıyı ikinci sayfaya yönlendirme
-  document.body.innerHTML = `<!<!DOCTYPE html>
+  document.body.innerHTML = `<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -72,7 +83,7 @@ function accept() {
     padding: 20px;
   }
   .container {
-    max-width: 600px;
+    max-width: 100%;
     margin: auto;
     background: white;
     padding: 20px;
@@ -80,9 +91,10 @@ function accept() {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 18px;
+    display: block; /* Butonları blok element yap */
+    width: 100%; /* Tam genişlik */
+    padding: 15px; /* Daha büyük padding */
+    font-size: 18px; /* Daha büyük font boyutu */
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -92,6 +104,7 @@ function accept() {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #ed87e6;
+    margin: 10px 0; /* Daha fazla marj */
   }
   .button:hover {background-color: #3e8e41}
   .button:active {
@@ -108,14 +121,12 @@ function accept() {
   }
   @media only screen and (max-width: 600px) {
     .container {
-      width: 100%;
       padding: 0;
     }
     .button {
-      width: 100%;
-      font-size: 16px;
+      padding: 12px; /* Mobil için daha küçük padding */
+      font-size: 16px; /* Mobil için daha küçük font boyutu */
     }
-    /* Diğer mobil uyumlu stil ayarları */
   }
 </style>
 </head>
