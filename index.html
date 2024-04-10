@@ -25,10 +25,8 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s; /* Renk değişim animasyonu ekle */
-        }
-        .button:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* Fare üzerine gelindiğinde gölge efekti */
+            position: relative; /* Butonların tıklanabilirliğini sağla */
+            z-index: 2; /* Butonları patlama efektinin önüne al */
         }
         .yes {
             background-color: #4CAF50;
@@ -50,6 +48,7 @@
             border-radius: 50%;
             opacity: 0;
             transition: opacity 0.5s, transform 0.5s;
+            z-index: 1; /* Patlama efektini butonların arkasına al */
         }
     </style>
 </head>
@@ -85,6 +84,7 @@
             explosion.style.transform = 'translate(-50%, -50%) scale(5)';
             navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
             setTimeout(function() {
+                // Patlama efekti sonrasında 'Pekii, iyi günler!' sayfasına geç
                 document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>';
             }, 700); // Patlama efekti sonrasında mesajı göster
         }
