@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Date'e Çıkalım mı?</title>
-    <!-- Mobil cihazlarda düzgün görüntülenmesi için viewport meta etiketi -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -11,11 +10,10 @@
             text-align: center;
             padding-top: 50px;
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Ekran dışına çıkan içerikleri gizle */
         }
         img {
-            width: 250px; /* Boyutu 2.5 katına çıkar */
-            height: 250px; /* Boyutu 2.5 katına çıkar */
+            width: 250px;
+            height: 250px;
             object-fit: cover;
         }
         .button {
@@ -26,8 +24,6 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            position: relative; /* Butonların tıklanabilirliğini sağla */
-            z-index: 2; /* Butonları patlama efektinin önüne al */
         }
         .yes {
             background-color: #4CAF50;
@@ -37,7 +33,6 @@
             background-color: #f44336;
             color: white;
         }
-        /* Patlama efekti için stil */
         .explosion {
             position: absolute;
             top: 50%;
@@ -48,8 +43,8 @@
             background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,255,0,0) 70%);
             border-radius: 50%;
             opacity: 0;
-            transition: opacity 0.5s, transform 0.5s, visibility 0.5s 0.5s; /* Görünürlük geçişini ekle */
-            visibility: hidden; /* Başlangıçta patlama efektini gizle */
+            transition: opacity 0.5s, transform 0.5s;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -60,36 +55,25 @@
         <button class="button yes" onclick="openSecondPage()">Evet</button>
         <button class="button no" onclick="rejectDate()">Hayır</button>
     </div>
-    <div class="explosion"></div> <!-- Patlama efekti için konteyner -->
+    <div class="explosion"></div>
     <script>
         function openSecondPage() {
-            // İkinci sayfayı aç
-            document.body.innerHTML = `
-                <!-- İkinci sayfa içeriği -->
-                <div style="padding: 20px; background: white; color: #333;">
-                    <p>Nasılsın? Umarım iyisindir. Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum.</p>
-                    <a href="https://forms.gle/Ty8WNVMHkReSDZfr8" target="_blank" class="button yes">
-                        Date Tarihi Ayarla
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=naUqWQ-of6o" target="_blank" class="button yes">
-                        Bu da benden sana bir şarkı
-                    </a>
-                </div>
-            `;
+            window.location.href = 'secondPage.html'; // İkinci sayfaya yönlendir
         }
 
         function rejectDate() {
-            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titreştir
             var explosion = document.querySelector('.explosion');
+            var buttons = document.querySelectorAll('.button');
             explosion.style.opacity = '1';
-            explosion.style.visibility = 'visible'; /* Patlama efektini göster */
+            explosion.style.visibility = 'visible';
             explosion.style.transform = 'translate(-50%, -50%) scale(5)';
-            navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
+            navigator.vibrate(500);
             setTimeout(function() {
                 explosion.style.opacity = '0';
-                explosion.style.visibility = 'hidden'; /* Patlama efektini gizle */
-                document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>'; // Yeni sayfaya geç
-            }, 700); // Patlama efektinden sonra geçiş yap
+                explosion.style.visibility = 'hidden';
+                buttons.forEach(button => button.style.display = 'none');
+                document.body.innerHTML += '<h2>Pekii, iyi günler!</h2>';
+            }, 700);
         }
     </script>
 </body>
