@@ -11,8 +11,9 @@
     padding: 0;
   }
   .container {
-    max-width: 100%;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -20,10 +21,10 @@
   }
   .button, .button-red {
     display: block;
-    width: calc(100% - 40px);
-    padding: 15px;
+    width: 90%;
     margin: 10px auto;
-    font-size: 18px;
+    padding: 20px;
+    font-size: 48px; /* 3 kat büyük yazı boyutu */
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -32,6 +33,7 @@
     background-color: #4CAF50;
     border: none;
     border-radius: 5px;
+    box-shadow: 0 5px #666;
   }
   .button-red {
     background-color: #f44336;
@@ -47,8 +49,8 @@
   }
   @media only screen and (max-width: 600px) {
     .button, .button-red {
-      font-size: 16px;
-      padding: 12px;
+      font-size: 36px; /* Mobil cihazlarda daha küçük yazı boyutu */
+      padding: 15px;
     }
   }
 </style>
@@ -78,8 +80,9 @@ function accept() {
     padding: 0;
   }
   .container {
-    max-width: 100%;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -87,10 +90,10 @@ function accept() {
   }
   .button {
     display: block;
-    width: calc(100% - 40px);
-    padding: 15px;
+    width: 90%;
     margin: 10px auto;
-    font-size: 18px;
+    padding: 20px;
+    font-size: 48px; /* 3 kat büyük yazı boyutu */
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -116,8 +119,8 @@ function accept() {
   }
   @media only screen and (max-width: 600px) {
     .button {
-      font-size: 16px;
-      padding: 12px;
+      font-size: 36px; /* Mobil cihazlarda daha küçük yazı boyutu */
+      padding: 15px;
     }
   }
 </style>
