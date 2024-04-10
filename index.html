@@ -13,8 +13,8 @@
             overflow: hidden; /* Ekran dışına çıkan içerikleri gizle */
         }
         img {
-            width: 100px;
-            height: 100px;
+            width: 250px; /* Boyutu 2.5 katına çıkar */
+            height: 250px; /* Boyutu 2.5 katına çıkar */
             object-fit: cover;
         }
         .button {
@@ -25,6 +25,8 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
+            position: relative; /* Butonların tıklanabilirliğini sağla */
+            z-index: 2; /* Butonları patlama efektinin önüne al */
         }
         .yes {
             background-color: #4CAF50;
@@ -45,27 +47,8 @@
             background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,255,0,0) 70%);
             border-radius: 50%;
             opacity: 0;
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        /* Gerçekçi patlama efekti için ek stil */
-        .explosion:before, .explosion:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            border-radius: inherit;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .explosion:before {
-            transform: scale(0.5);
-            opacity: 0.5;
-        }
-        .explosion:after {
-            transform: scale(0.75);
-            opacity: 0.75;
+            transition: opacity 0.5s, transform 0.5s, visibility 0.5s 0.5s; /* Görünürlük geçişini ekle */
+            visibility: hidden; /* Başlangıçta patlama efektini gizle */
         }
     </style>
 </head>
@@ -95,32 +78,17 @@
         }
 
         function rejectDate() {
-            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titret
-            if (navigator.vibrate) {
-                navigator.vibrate([200, 100, 200]);
-            }
+            // Hayır butonuna tıklandığında patlama efekti oluştur ve telefonu titreştir
             var explosion = document.querySelector('.explosion');
             explosion.style.opacity = '1';
-            explosion.style.transform = 'translate(-50%, -50%) scale(1)';
-            explosion.style.transition = 'transform 0.5s, opacity 0.5s';
-
-            // Patlama efektinin katmanlarını oluştur
-            setTimeout(function() {
-                explosion:before {
-                    opacity: 1;
-                    transform: scale(1.5);
-                }
-                explosion:after {
-                    opacity: 1;
-                    transform: scale(1.25);
-                }
-            }, 100);
-
+            explosion.style.visibility = 'visible'; /* Patlama efektini göster */
+            explosion.style.transform = 'translate(-50%, -50%) scale(5)';
+            navigator.vibrate(500); // Telefonu 500ms süreyle titreştir
             setTimeout(function() {
                 explosion.style.opacity = '0';
-                explosion.style.transform = 'translate(-50%, -50%) scale(0)';
-                document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>';
-            }, 700); // Patlama efekti sonrasında mesajı göster
+                explosion.style.visibility = 'hidden'; /* Patlama efektini gizle */
+                document.body.innerHTML = '<h2>Pekii, iyi günler!</h2>'; // Yeni sayfaya geç
+            }, 700); // Patlama efektinden sonra geçiş yap
         }
     </script>
 </body>
