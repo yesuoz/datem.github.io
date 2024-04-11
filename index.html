@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -119,17 +120,13 @@ function accept() {
   document.getElementById('date-container').style.display = 'block';
 }
 
-<script>
 function decline() {
   var explosion = document.getElementById('explosion');
   explosion.style.display = 'block';
   setTimeout(function() {
     explosion.style.display = 'none';
-    // Patlama efektinden sonra yeni bir sayfaya yönlendirme
-    window.location.href = 'goodbye.html';
   }, 1000);
 }
-
 
 document.getElementById('date-button').addEventListener('click', function() {
   window.location.href = 'https://forms.gle/DqWARxh6J1XcP8oK9';
