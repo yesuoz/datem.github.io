@@ -17,8 +17,10 @@
   }
 
   .container {
-    width: 100%; /* Genişliği ekranın tamamına ayarla */
-    max-width: 400px; /* Maksimum genişliği sınırla */
+    width: 180%; /* Yatay boyutu 1.8 katına çıkar */
+    height: 300%; /* Dikey boyutu 3 katına çıkar */
+    max-width: 720px; /* Maksimum genişliği sınırla */
+    max-height: 1800px; /* Maksimum yüksekliği sınırla */
     margin: auto;
     padding: 20px;
     background: #fff;
@@ -26,25 +28,26 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column; /* İçerikleri dikey olarak hizala */
+    overflow: auto; /* İçerik kutunun dışına taştığında kaydırma çubuğu ekle */
   }
 
   .button, .button-red {
-    padding: 15px 30px; /* Düğmelerin boyutunu artır */
-    font-size: 1.2rem; /* Yazı boyutunu büyüt */
+    padding: 30px 60px; /* Düğmelerin boyutunu artır */
+    font-size: 2.4rem; /* Yazı boyutunu büyüt */
     cursor: pointer;
     text-decoration: none;
     color: #fff;
     background-color: #4CAF50;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 10px #666;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .button:hover, .button-red:hover {
-    box-shadow: 0 4px #333;
-    transform: translateY(-1px);
+    box-shadow: 0 8px #333;
+    transform: translateY(-2px);
   }
 
   .button-red {
@@ -57,7 +60,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 100px; /* Patlama efektinin boyutunu azalt */
     color: red;
     animation: explode 1s ease-out forwards;
   }
@@ -75,12 +78,14 @@
 
   @media only screen and (max-width: 600px) {
     .container {
-      width: 90%; /* Mobil cihazlarda genişliği azalt */
+      width: 100%; /* Mobil cihazlarda genişliği ekranın tamamına ayarla */
+      height: auto; /* Mobil cihazlarda yüksekliği içeriğe göre ayarla */
       max-width: none;
+      max-height: none;
     }
     .button, .button-red {
-      font-size: 18px; /* Mobil cihazlarda yazı boyutunu artır */
-      padding: 20px 35px; /* Mobil cihazlarda düğme boyutunu artır */
+      font-size: 3rem; /* Mobil cihazlarda yazı boyutunu daha da artır */
+      padding: 40px 80px; /* Mobil cihazlarda düğme boyutunu daha da artır */
     }
   }
 </style>
@@ -125,4 +130,3 @@ document.getElementById('song-button').addEventListener('click', function() {
 
 </body>
 </html>
-
