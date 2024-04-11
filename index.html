@@ -28,7 +28,12 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column; /* İçerikleri dikey olarak hizala */
+    justify-content: center; /* İçerikleri ortala */
     overflow: auto; /* İçerik kutunun dışına taştığında kaydırma çubuğu ekle */
+  }
+
+  p {
+    font-size: 16rem; /* Paragraf yazı boyutunu 8 katına çıkar */
   }
 
   .button, .button-red {
@@ -86,6 +91,9 @@
     .button, .button-red {
       font-size: 3rem; /* Mobil cihazlarda yazı boyutunu daha da artır */
       padding: 40px 80px; /* Mobil cihazlarda düğme boyutunu daha da artır */
+    }
+    p {
+      font-size: 24rem; /* Mobil cihazlarda paragraf yazı boyutunu 8 katına çıkar */
     }
   }
 </style>
