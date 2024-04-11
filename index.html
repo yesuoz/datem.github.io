@@ -17,11 +17,10 @@
   }
 
   .container {
-    width: 90%;
-    /* 18:9 aspect ratio */
-    height: calc(90% * 9 / 18);
-    max-width: 600px;
-    max-height: calc(600px * 9 / 18);
+    width: 50%; /* Genişlik oranını ayarla */
+    height: calc(50% * 18 / 9); /* Yükseklik oranını 18:9 olarak ayarla */
+    max-width: 300px;
+    max-height: calc(300px * 18 / 9);
     margin: auto;
     padding: 20px;
     background: #fff;
@@ -78,13 +77,15 @@
   }
 
   @media only screen and (max-width: 600px) {
+    .container {
+      width: 90%; /* Mobil cihazlar için genişlik */
+      height: calc(90% * 18 / 9); /* Mobil cihazlar için yükseklik */
+      max-width: none;
+      max-height: none;
+    }
     .button, .button-red {
       font-size: 18px;
       padding: 20px 35px;
-    }
-    .container {
-      height: 90vw; /* Mobile responsive aspect ratio */
-      max-height: none;
     }
   }
 </style>
