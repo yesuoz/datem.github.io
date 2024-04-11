@@ -3,32 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Karşılama Sayfası</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
 <style>
   body, html {
     height: 100%;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .container {
-    position: relative;
-    height: 100%;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   }
 
   .button, .button-red {
-    display: block;
-    width: auto;
-    padding: 1.5% 3%;
-    font-size: 2vw;
+    padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
-    outline: none;
     color: #fff;
     background-color: #4CAF50;
     border: none;
     border-radius: 5px;
     box-shadow: 0 5px #666;
-    margin: 0 auto;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .button:hover, .button-red:hover {
+    box-shadow: 0 4px #333;
+    transform: translateY(-1px);
   }
 
   .button-red {
@@ -41,7 +55,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1750px;
+    font-size: 50px;
     color: red;
     animation: explode 1s ease-out forwards;
   }
@@ -59,8 +73,8 @@
 
   @media only screen and (max-width: 600px) {
     .button, .button-red {
-      font-size: 36px;
-      padding: 15px;
+      font-size: 16px;
+      padding: 10px 15px;
     }
   }
 </style>
