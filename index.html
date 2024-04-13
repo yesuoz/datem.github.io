@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -6,110 +5,87 @@
 <title>Karşılama Sayfası</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
 <style>
-  body, html {
-    height: 92%;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  .container {
-    width: 240%; /* Yatay boyutu 1.8 katına çıkar */
-    height: 175%; /* Dikey boyutu 3 katına çıkar */
-    max-width: 720px; /* Maksimum genişliği sınırla */
-    max-height: 1800px; /* Maksimum yüksekliği sınırla */
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column; /* İçerikleri dikey olarak hizala */
-    justify-content: center; /* İçerikleri ortala */
-    overflow: auto; /* İçerik kutunun dışına taştığında kaydırma çubuğu ekle */
-  }
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  p {
-    font-size: 3.1rem; /* Paragraf yazı boyutunu 8 katına çıkar */
-  }
+p {
+  font-size: 2rem;
+}
 
-  .button, .button-red {
-    padding: 30px 60px; /* Düğmelerin boyutunu artır */
-    font-size: 2.4rem; /* Yazı boyutunu büyüt */
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 10px #666;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-  }
+.button, .button-red {
+  padding: 15px 30px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px #666;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
 
-  .button:hover, .button-red:hover {
-    box-shadow: 0 8px #333;
-    transform: translateY(-2px);
-  }
+.button:hover, .button-red:hover {
+  box-shadow: 0 4px #333;
+  transform: translateY(-2px);
+}
 
-  .button-red {
-    background-color: #f44336;
-  }
+.button-red {
+  background-color: #f44336;
+}
 
-  .explosion {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1200px; /* Patlama efektinin boyutunu azalt */
-    color: red;
-    animation: explode 1s ease-out forwards;
-  }
+.explosion {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1200px;
+  color: red;
+  animation: explode 1s ease-out forwards;
+}
 
-  @keyframes explode {
-    from {
-      opacity: 1;
-      transform: scale(0.1) translate(-50%, -50%);
-    }
-    to {
-      opacity: 0;
-      transform: scale(1) translate(-50%, -50%);
-    }
+@keyframes explode {
+  from {
+    opacity: 1;
+    transform: scale(0.1) translate(-50%, -50%);
   }
-
-  @media only screen and (max-width: 600px) {
-    .container {
-      width: 95%; /* Mobil cihazlarda genişliği ekranın tamamına ayarla */
-      height: 95%; /* Mobil cihazlarda yüksekliği içeriğe göre ayarla */
-      max-width: none;
-      max-height: none;
-    }
-    .button, .button-red {
-      font-size: 2.2rem; /* Mobil cihazlarda yazı boyutunu daha da artır */
-      padding: 40px 80px; /* Mobil cihazlarda düğme boyutunu daha da artır */
-    }
-    p {
-      font-size: 2.7rem; /* Mobil cihazlarda paragraf yazı boyutunu 8 katına çıkar */
-    }
+  to {
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
   }
+}
 </style>
 </head>
 <body>
 
 <div id="welcome-container" class="container">
-  <p>"Gayem zat-ı alinizi taciz etmek değil, efkari umumide muhabbet kurmaktır. Cevabı müspetiniz kalb-i hazı halimi tamir ve temin edeceğinden dest-i muhabbetinize talibim" -Y<br> </p>
+  <p>"Gayem zat-ı alinizi taciz etmek değil, efkari umumide muhabbet kurmaktır. Cevabı müspetiniz kalb-i hazı halimi tamir ve temin edeceğinden dest-i muhabbetinize talibim"</p>
   <button class="button" onclick="accept()">Evet</button>
   <button class="button button-red" onclick="decline()">Hayır</button>
   <div id="explosion" class="explosion">💥</div>
 </div>
 
 <div id="date-container" class="container" style="display:none;">
-  <p>Nasılsın? Umarım iyisindir. Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum.</p>
+  <p>Nasılsın? Umarım iyisindir. "Evet’e tıkladığına göre bir randevuya hazır olduğunu düşünüyorum. Aşağıdaki linkte uygun bir gün seçmek için bir alan mevcut. Yanıtını bekliyorum."</p>
   <button id="date-button" class="button">Date Günü</button>
   <button id="song-button" class="button">Ufak Bir Şarkı</button>
 </div>
@@ -125,6 +101,7 @@ function decline() {
   explosion.style.display = 'block';
   setTimeout(function() {
     explosion.style.display = 'none';
+    window.location.href = 'goodbye.html'; // Yeni oluşturduğunuz sayfanın adı
   }, 1000);
 }
 
