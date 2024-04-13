@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>Hoşçakalın</title>
-</head>
-<body>
-<p>Pekii, iyi günler!</p>
-</body>
-</html>
+function decline() {
+  var explosion = document.getElementById('explosion');
+  explosion.style.display = 'block';
+  setTimeout(function() {
+    explosion.style.display = 'none';
+    window.location.href = 'goodbye.html'; // Yeni oluşturduğunuz sayfanın adı
+  }, 1000);
+}
